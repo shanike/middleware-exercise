@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>רשימת המשתמשים</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+    <h1><%= title %></h1>
+
+    <ul>
+        <% for(let user of users) { %>
+        <li>name: <%= user.name %>, age:<%= user.age %></li>
+        <% } %>
+    </ul>
+
+    <a href="/">back</a>
+</body>
+
+</html>
