@@ -3,9 +3,6 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var m1 = require('./middlewares/m1')
-var m2 = require('./middlewares/m2')
-var m3 = require('./middlewares/m3')
 
 var indexRouter = require('./routes/index');
 
@@ -20,12 +17,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-//add console logs (for סיכום) in mw s
-// remove app.use(logger('dev))
-app.use('/', m1) // name and age validation
-app.use('', m3) // browser agents count for each _valid_ POST
-app.use('/', m2) // under 18 age censor
 
 app.use('/', indexRouter);
 

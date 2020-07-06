@@ -2,18 +2,18 @@ var express = require('express');
 var router = express.Router();
 
 var Users = require('../lib/users')
-var BrowserCounter = require('../lib/browser_agents')
+
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  const topBro = BrowserCounter.getTopBro()
+  const topBro = {} //to be changed to real info abt browser agents
   res.render('index', {
     title: 'Who Am I',
     topBro: typeof topBro == "object" && Object.keys(topBro).length ? topBro : { bro: "---", count: "---" }
   });
 });
 
-/* POST home page. */
+/* POST from home page. */
 router.post('/', (req, res, next) => {
   const { name, age } = req.body
   Users.addUser({ age, name })
@@ -22,6 +22,7 @@ router.post('/', (req, res, next) => {
   res.redirect('/users')
 })
 
+/* GET users page. */
 router.get('/users', (req, res, next) => {
   res.render('users_list', {
     title: "users list",
