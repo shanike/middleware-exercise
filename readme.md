@@ -5,14 +5,18 @@
 במסך הראשי למשתמש יש טופס בו יש למלא שם משתמש וגיל
 לאחר מכן הוא מועבר לעמוד בו רואים את את רשימת כל המשתמשים ואת גילם
 
+# התרגיל
 עליכם להוסיף שלושה
-middlewares 
+middlewares:
+
 
 # 1st middleware
 *user name and age validation*
 
 Check that length of user name is greater than 1
+
 Check that user name includes only English letters (a-zA-Z) and spaces
+
 Check that age is a number and is a valid number (does not start with 0)
 
 If info is not valid, return an error: 
@@ -22,35 +26,27 @@ If info is not valid, return an error:
 
 # 2nd middleware
 *under 18 age censor*
+
 If age is under 18, override the '/users' route render (res.render()) with a list of users in which all ages and user names are censored, and in this case, do not add the under-age user to our users list
+
+censored list example:
 
 ![Screenshot](censoredList.png)
 
 # 3rd middleware
+*browser-agents count for each valid POST*
 
-# middleware 1:
- לבדוק האם האורך של השם גדול מ-1, האם בשם יש רק אותיות באנגלית ורווחים והאם הגיל הוא מספר 
- (לא יכול להתחיל ב-0)
-אם יש שגיאה - להחזיר שגיאה
-(בתור אובייקט 
-```
-    { message: "error message goes here" }
-```
-)
+Keep count of how many POST requests each browser-agent has done
 
-# middleware 2:
-לבדוק האם הגיל מעל 18. אם כן ממשיכים כרגיל, אם לא, דורסים את ה
-render
- עם רשימה שבה כל השמות חסויים וכל הגילאים מצונזרים ולא מכניסים את המשתמש הצעיר לרשימת המשתמשים.
+In this middleware, if req is a POST request, increase count for current browser-agent by 1
 
-# middleware 3:
-כמה בקשות 
-POST  
-נעשו מכל דפדפן?
- בכל בקשת
- POST 
-מעלים ב-1 את מספר הבקשות מהדפדפן הנוכחי. 
-מציגים למשתמש מהו הדפדפן שעשו ממנו הכי הרבה 
-POSTs
- וכמה פעמים זה קרה.
+Display most popular agent-browser (and POSTs count) on home page (change topBro variable on router.get('/', ...) in ./routes/index.js)
+
+*reminder*
+
+e.g. localhost:3000/
+
+route '/' on browser reutrns whatever is inside router.get('/')
+
+before the request gets to the function in router.get('/'), we have the middlewares layer, which get all information about the reqeust
 
