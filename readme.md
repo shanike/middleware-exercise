@@ -3,7 +3,7 @@
 
 מה קורה כרגע בפרויקט:
 במסך הראשי למשתמש יש טופס בו יש למלא שם משתמש וגיל
-לאחר מכן הוא מועבר לעמוד בו רואים את את רשימת כל המשתמשים ואת גילם
+לאחר מכן מוצגת לו רשימת כל המשתמשים וגילם
 
 # התרגיל
 עליכם להוסיף שלושה
@@ -28,7 +28,7 @@ If info is not valid, return an error:
 # 2nd middleware
 *under 18 age censor*
 
-If age is under 18, override the '/users' route render so it will SEND an object with a list of users in which all ages and user names are censored, and in this case, DO NOT add the under-age user to our users list
+If age is under 18, override route's render so it will SEND an object with a list of users in which all ages and user names are censored, and in this case, DO NOT add the under-age user to our users list
 
 censored list example:
 
@@ -42,14 +42,3 @@ Keep count of how many POST requests each browser-agent has done
 In this middleware, if req is a POST request, increase count for current browser-agent by 1
 
 Display most popular agent-browser (and POSTs count) on home page (change topBro variable on router.get('/', ...) in ./routes/index.js)
-
-
-
-***reminder***
-
-e.g. localhost:3000/
-
-route '/' on browser reutrns whatever is inside router.get('/')
-
-before the request gets to the function in router.get('/'), we have the middlewares layer, which get all information about the reqeust
-
