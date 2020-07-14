@@ -19,15 +19,10 @@ router.post('/', (req, res, next) => {
   Users.addUser({ age, name })
   req.body.age = ""
   req.body.name = ""
-  res.redirect('/users')
-})
-
-/* GET users page. */
-router.get('/users', (req, res, next) => {
-  res.render('users_list', {
-    title: "users list",
-    users: Users.getUsers()
-  })
+    res.render('users_list', {
+      title: "Users List",
+      users: Users.getUsers()
+    })
 })
 
 module.exports = router;

@@ -28,7 +28,7 @@ If info is not valid, return an error:
 # 2nd middleware
 *under 18 age censor*
 
-If age is under 18, override the '/users' route render (res.render()) with a list of users in which all ages and user names are censored, and in this case, do not add the under-age user to our users list
+If age is under 18, override the '/users' route render so it will SEND an object with a list of users in which all ages and user names are censored, and in this case, DO NOT add the under-age user to our users list
 
 censored list example:
 
